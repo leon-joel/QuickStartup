@@ -26,8 +26,8 @@ module Gomi
     config.time_zone = 'Tokyo'
     # http://qiita.com/sutoh/items/b7d23990abb9c5083daa
 
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    config.i18n.default_locale = :ja
+    # config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
+    # config.i18n.default_locale = :ja
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
@@ -42,11 +42,17 @@ module Gomi
     # config.quiet_assets = false
 
     config.generators do |g|
-      g.helper false
       g.assets false
-      g.test_framework :rspec
-      g.controller_specs false
-      g.view_specs false
+      g.helper false
+      g.jbuilder false
+      g.test_framework :rspec,
+                       fixture: true,
+                       fixture_replacement: :factory_girl,
+                       view_specs: false,
+                       controller_specs: false,
+                       routing_specs: false,
+                       helper_specs: false,
+                       integration_tool: false
     end
 
   end

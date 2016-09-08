@@ -1,14 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :admin_users
-  resources :devices
-  resources :blogs, format: false do
-    resources :entries, { format: false, except: [ :index ] } do
-      resources :comments, { format: false, only: [ :create, :destroy ] }
-    end
-  end
-
-  patch 'blogs/:blog_id/entries/:entry_id/comments/:id' => 'comments#approve', format: false, as: :approve_comment
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -45,8 +36,7 @@ Rails.application.routes.draw do
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     resources :comments
-  #     resources :sales do
+  #     #     resources :sales do
   #       get 'recent', on: :collection
   #     end
   #   end

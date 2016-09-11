@@ -35,6 +35,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml-rails'
 gem 'slim-rails'
 
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+end
 
 group :development, :test do
   gem 'rspec-rails'
